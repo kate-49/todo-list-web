@@ -1,7 +1,7 @@
 class TodoItem
   attr_reader :name, :category, :deadline, :completed
 
-  def initialize(name, category, deadline)
+  def initialize(name, category, deadline=" ")
     @name = name
     @category = category
     @deadline = deadline
