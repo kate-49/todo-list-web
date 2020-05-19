@@ -27,7 +27,32 @@ class ToDoListApp < Sinatra::Base
   post '/add-item' do
     name = params[:name]
     category = params[:category]
-    $todolist.add_item(name,category)
+    deadline = params[:deadline]
+    $todolist.add_item(name,category,deadline)
+    response = redirect('/todolist')
+    response
+  end
+
+  get '/remove-item' do
+    response = erb :remove_item
+    response
+  end
+
+  post '/remove-item' do
+    name = params[:name]
+    $todolist.remove_item(name)
+    response = redirect('/todolist')
+    response
+  end
+
+  get '/complete-item' do
+    response = erb :complete_item
+    response
+  end
+
+  post '/complete-item' do
+    name = params[:name]
+    $todolist.complete_item(name)
     response = redirect('/todolist')
     response
   end
